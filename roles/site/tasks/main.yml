@@ -1,0 +1,21 @@
+---
+
+- name: install piku dependencies (WIP)
+  apt: name={{ item }} state=latest
+  with_items:
+    - ttf-mscorefonts-installer
+    - phantomjs
+  tags:
+    - apps
+    
+    
+- name: install dropbox
+  #wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64"
+
+#- name: install NewRelic agent
+#138  echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' | sudo tee /etc/apt/sources.list.d/newrelic.list
+#  139  wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add -
+#  140  apt-get update
+#  141  apt-get install newrelic-sysmond
+#  142  nrsysmond-config --set license_key={{ newrelic_license_key }}
+# /etc/init.d/newrelic-sysmond start

@@ -3,13 +3,19 @@
 - name: install piku dependencies (WIP)
   apt: name={{ item }} state=latest
   with_items:
-    - incron
-    - nginx
+    - git
     - build-essential
-    - python-dev
     - libxml2-dev
     - libxslt1-dev
     - libjpeg-dev
     - zlib1g-dev
+    - python-dev
+    - python-virtualenv 
+    - python-pip  
+    - uwsgi 
+    - uwsgi-plugin-python
+    - uwsgi-plugin-gevent-python
+    - incron
+    - nginx
   tags:
     - setup
