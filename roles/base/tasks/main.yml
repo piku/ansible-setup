@@ -19,6 +19,7 @@
   with_items:
     - fail2ban
     - htop
+    - iftop
     - language-pack-en-base
     - software-properties-common
     - tmux
