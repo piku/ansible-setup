@@ -1,0 +1,15 @@
+---
+
+- name: install piku dependencies (WIP)
+  apt: name={{ item }} state=latest
+  with_items:
+    - incron
+    - nginx
+    - build-essential
+    - python-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libjpeg-dev
+    - zlib1g-dev
+  tags:
+    - setup
