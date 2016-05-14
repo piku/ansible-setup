@@ -1,0 +1,64 @@
+---
+
+- name: copy public keys
+  authorized_key: user={{ ansible_ssh_user }} key="{{ item }}"
+  with_file:
+     - ~/.ssh/id_rsa.pub
+  tags:
+    - setup
+    - ssh
+
+- name: update APT cache
+  apt: update_cache=yes cache_valid_time=3600
+  tags:
+    - setup
+    - locale
+
+- name: install base packages
+  apt: name={{ item }} state=latest
+  with_items:
+    - fail2ban
+    - htop
+    - language-pack-en-base
+    - software-properties-common
+    - tmux
+    - wget
+  tags:
+    - setup
+    - locale
+
+- name: locale setup
+  shell: locale-gen en_US.UTF-8
+  shell: dpkg-reconfigure locales
+  shell: update-locale {{ item }}
+  with_items:
+    - LANGUAGE="en_US.UTF-8"
+    - LANG="en_US.UTF-8"
+    - LC_ALL="en_US.UTF-8"
+  sudo: yes
+  tags:
+    - setup
+    - locale
+
+- name: timezone setup
+  shell: timedatectl set-timezone Europe/Lisbon
+  sudo: yes
+  tags:
+    - configuration
+
+- name: limits
+  lineinfile: dest=/etc/security/limits.conf line="{{ piku_username }} {{ item.key }} nofile {{ item.value }}"
+  with_dict: "{{ limits }}"
+  sudo: yes
+  tags:
+    - setup
+    - tuning
+
+- name: sysctl tuning
+  sysctl: name="{{ item.key }}" value="{{ item.value }}" state=present
+  with_dict: "{{ kernel }}"
+  sudo: yes
+  tags:
+    - setup
+    - tuning
+
