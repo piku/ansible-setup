@@ -41,7 +41,7 @@
         # maximum Socket Send Buffer
         net.core.wmem_max: 12582912
         # number of incoming connections
-        net.core.somaxconn: 4096
+        net.core.somaxconn: 32768
         # number of incoming connections backlog
         net.core.netdev_max_backlog: 65536
         # maximum amount of option memory buffers
