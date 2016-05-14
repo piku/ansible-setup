@@ -19,43 +19,19 @@
         #vm.swappiness: 0
         vm.swappiness: 10
         # tweak filesystem page cache flushing
-        vm.dirty_ratio: 80
-        vm.dirty_background_ratio: 80
-        vm.dirty_expire_centisecs: 12000
-        # allowed local port range
-        net.ipv4.ip_local_port_range: 2000 65535
-        # number of times SYNACKs for passive TCP connections
-        net.ipv4.tcp_synack_retries: 2
-        # decrease the time default value for tcp_fin_timeout connection
-        net.ipv4.tcp_fin_timeout: 15
-        # decrease the time default value for connections to keep alive
-        net.ipv4.tcp_keepalive_time: 300
-        net.ipv4.tcp_keepalive_probes: 5
-        net.ipv4.tcp_keepalive_intvl: 15
-        # default Socket Receive Buffer
-        net.core.rmem_default: 65536
-        # maximum Socket Receive Buffer
-        net.core.rmem_max: 8388608
-        # default Socket Send Buffer
-        net.core.wmem_default: 65536
-        # maximum Socket Send Buffer
-        net.core.wmem_max: 8388608
+        #vm.dirty_ratio: 80
+        #vm.dirty_background_ratio: 80
+        #vm.dirty_expire_centisecs: 12000
         # number of incoming connections
         net.core.somaxconn: 32768
         # number of incoming connections backlog
         net.core.netdev_max_backlog: 65536
-        # maximum amount of option memory buffers
-        net.core.optmem_max: 8388608
-        # maximum total buffer-space
-        # measured in pages (4096 bytes)
-        net.ipv4.tcp_mem: 4096 87380 8388608
-        net.ipv4.udp_mem: 4096 87380 8388608
-        # read-buffer space
-        net.ipv4.tcp_rmem: 4096 87380 8388608
-        net.ipv4.udp_rmem_min: 16384
-        # write-buffer-space
-        net.ipv4.tcp_wmem: 4096 87380 8388608
-        net.ipv4.udp_wmem_min: 16384
+        # allowed local port range
+        net.ipv4.ip_local_port_range: 2000 65535
+        # decrease the time default value for connections to keep alive
+        net.ipv4.tcp_keepalive_time: 300
+        net.ipv4.tcp_keepalive_probes: 5
+        net.ipv4.tcp_keepalive_intvl: 15
         # increase the tcp-time-wait buckets pool size to prevent simple DOS attacks
         net.ipv4.tcp_max_tw_buckets: 1440000
         # protect Against TCP Time-Wait
@@ -65,6 +41,30 @@
         # allow reuse of TIME_WAIT sockets
         net.ipv4.tcp_tw_recycle: 1
         net.ipv4.tcp_tw_reuse: 1
+        # number of times SYNACKs for passive TCP connections
+        net.ipv4.tcp_synack_retries: 2
+        # decrease the time default value for tcp_fin_timeout connection
+        net.ipv4.tcp_fin_timeout: 15
+        # default Socket Receive Buffer
+        #net.core.rmem_default: 65536
+        # maximum Socket Receive Buffer
+        #net.core.rmem_max: 8388608
+        # default Socket Send Buffer
+        #net.core.wmem_default: 65536
+        # maximum Socket Send Buffer
+        #net.core.wmem_max: 8388608
+        # maximum amount of option memory buffers
+        #net.core.optmem_max: 8388608
+        # maximum total buffer-space
+        # measured in pages (4096 bytes)
+        #net.ipv4.tcp_mem: 8192 174760 1677720
+        #net.ipv4.udp_mem: 8192 174760 1677720
+        # read-buffer space
+        #net.ipv4.tcp_rmem: 4096 87380 8388608
+        #net.ipv4.udp_rmem_min: 16384
+        # write-buffer-space
+        #net.ipv4.tcp_wmem: 4096 87380 8388608
+        #net.ipv4.udp_wmem_min: 16384
 
 
   roles:
