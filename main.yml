@@ -4,7 +4,7 @@
   sudo: yes
 
   vars:
-    - piku_version: "0.4.3"
+    - piku_version: "master"
     - ssh_keys: []
     - piku_username: "piku"
     - limits:
@@ -16,16 +16,16 @@
         # maximize number of file watches
         fs.inotify.max_user_watches: 100000
         # swap only to avoid out of memory
-        #vm.swappiness: 0
-        vm.swappiness: 10
+        vm.swappiness: 0
+        #vm.swappiness: 10
         # tweak filesystem page cache flushing
         #vm.dirty_ratio: 80
         #vm.dirty_background_ratio: 80
         #vm.dirty_expire_centisecs: 12000
         # number of incoming connections
-        net.core.somaxconn: 32768
+        #net.core.somaxconn: 32768
         # number of incoming connections backlog
-        net.core.netdev_max_backlog: 65536
+        #net.core.netdev_max_backlog: 65536
         # allowed local port range
         net.ipv4.ip_local_port_range: 2000 65535
         # decrease the time default value for connections to keep alive
@@ -65,7 +65,6 @@
         # write-buffer-space
         #net.ipv4.tcp_wmem: 4096 87380 8388608
         #net.ipv4.udp_wmem_min: 16384
-
 
   roles:
     - base
