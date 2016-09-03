@@ -1,6 +1,7 @@
 ---
 
-- name: install piku dependencies (WIP)
+- name: install package dependencies
+  sudo: yes
   apt: name={{ item }} state=latest
   with_items:
     - git
@@ -14,8 +15,26 @@
     - python-pip  
     - uwsgi 
     - uwsgi-plugin-python
+    - uwsgi-plugin-python3
+    - uwsgi-plugin-asyncio-python3
     - uwsgi-plugin-gevent-python
+    - uwsgi-plugin-tornado-python
     - incron
     - nginx
   tags:
+    - piku
     - setup
+
+- name: install click
+  sudo: yes
+  shell: pip install -U click pip
+  tags:
+    - piku
+    - setup
+
+- name: add piku user
+  sudo: yes
+  user: name=piku createhome=yes comment='PaaS access' group=www-data state=present
+  tags:
+    - piku
+    - security
