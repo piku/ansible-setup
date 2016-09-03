@@ -24,6 +24,7 @@
     - software-properties-common
     - tmux
     - wget
+    - vim
   tags:
     - setup
     - locale
@@ -45,6 +46,7 @@
   shell: timedatectl set-timezone Europe/Lisbon
   sudo: yes
   tags:
+    - setup
     - configuration
 
 - name: limits
