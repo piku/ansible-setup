@@ -1,21 +1,22 @@
 ---
 
-- name: install piku dependencies (WIP)
-  apt: name={{ item }} state=latest
+- name: set up redirect site
+  sudo: yes
+  copy: src={{ item.src }} dest={{ item.dest }} owner={{ item.owner }} group={{ item.group }} mode={{ item.mode }} backup={{ item.backup }}
   with_items:
-    - ttf-mscorefonts-installer
-    - phantomjs
+      - { src: 'redirects', dest: '/etc/nginx/sites-available/redirects', owner: 'root', group: 'root', mode: 644, backup: 'no' }
   tags:
-    - apps
-    
-    
-- name: install dropbox
-  #wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64"
+    - site
+    - setup
 
-#- name: install NewRelic agent
-#138  echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' | sudo tee /etc/apt/sources.list.d/newrelic.list
-#  139  wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add -
-#  140  apt-get update
-#  141  apt-get install newrelic-sysmond
-#  142  nrsysmond-config --set license_key={{ newrelic_license_key }}
-# /etc/init.d/newrelic-sysmond start
+- name: enable redirect site
+  sudo: yes
+  file:
+    src: /etc/nginx/sites-available/redirects
+    dest: /etc/nginx/sites-enabled/redirects
+    owner: root
+    group: root
+    state: link
+  tags:
+    - site
+    - setup

@@ -21,6 +21,7 @@
     - uwsgi-plugin-tornado-python
     - incron
     - nginx
+    - wget
   tags:
     - piku
     - setup

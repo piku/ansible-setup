@@ -1,0 +1,16 @@
+---
+
+- name: install dropbox
+  become: yes
+  become_user: piku
+  shell: cd && wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64" && tar -zxvf dropbox.tar.gz && rm -f dropbox.tar.gz
+
+- name: install dropbox CLI
+  become: yes
+  become_user: piku
+  shell: wget -O ~/dropbox.py "http://www.dropbox.com/download?dl=packages/dropbox.py" && chmod +x ~/dropbox.py
+
+- name: install dropbox crontab entry
+  become: yes
+  become_user: piku
+  cron: { name: dropbox, special_time: reboot, job: /home/piku/dropbox.py start }

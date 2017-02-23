@@ -23,7 +23,7 @@
         #vm.dirty_background_ratio: 80
         #vm.dirty_expire_centisecs: 12000
         # number of incoming connections
-        #net.core.somaxconn: 32768
+        net.core.somaxconn: 32768
         # number of incoming connections backlog
         #net.core.netdev_max_backlog: 65536
         # allowed local port range
@@ -69,4 +69,5 @@
   roles:
     - base
     - piku
-
+    #- dropbox
+    - site
