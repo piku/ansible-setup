@@ -14,6 +14,12 @@
     - setup
     - locale
 
+- name: upgrade 
+  apt: upgrade=dist
+  tags:
+    - setup
+    - maintenance
+
 - name: install base packages
   apt: name={{ item }} state=latest
   with_items:
