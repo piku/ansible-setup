@@ -38,3 +38,33 @@
   tags:
     - piku
     - security
+
+- name: copy files
+  sudo: yes
+  copy: src={{ item.src }} dest={{ item.dest }} owner={{ item.owner }} group={{ item.group }} mode={{ item.mode }} backup={{ item.backup }}
+  with_items:
+      - { src: 'nginx.default.dist', dest: '/etc/nginx/sites-available/default', owner: 'root', group: 'root', mode: 644, backup: 'yes' }
+      - { src: 'incron.dist', dest: '/etc/incron.d/piku', owner: 'root', group: 'root', mode: 644, backup: 'no' }
+      - { src: 'uwsgi.service', dest: '/etc/systemd/system/uwsgi.service', owner: 'root', group: 'root', mode: 644, backup: 'yes' }
+      - { src: 'piku.py', dest: '/home/piku/piku.py', owner: 'root', group: 'root', mode: 755, backup: 'no' }
+  tags:
+    - piku
+    - setup
+
+- name: setup piku
+  sudo: yes
+  shell: python /home/piku/piku.py setup && python /home/piku/piku.py setup:ssh /tmp/pubkey
+  tags:
+    - piku
+    - setup
+  
+
+- name: setup services
+  sudo: yes
+  shell: systemctl enable nginx && systemctl restart nginx
+  shell: systemctl enable incron && systemctl restart incron
+  shell: systemctl enable uwsgi && systemctl restart uwsgi
+  tags:
+    - piku
+    - services
+    - setup
