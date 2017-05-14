@@ -48,6 +48,7 @@
       - { src: 'incron.dist', dest: '/etc/incron.d/piku', owner: 'root', group: 'root', mode: 644, backup: 'no' }
       - { src: 'uwsgi.service', dest: '/etc/systemd/system/uwsgi.service', owner: 'root', group: 'root', mode: 644, backup: 'yes' }
       - { src: 'piku.py', dest: '/home/{{ piku_username }}/piku.py', owner: 'root', group: 'root', mode: 755, backup: 'no' }
+      - { src: '~/.ssh/id_rsa.pub', dest: '/tmp/pubkey', owner: '{{ piku_username }}', group: 'www-data', mode: 644, backup: 'no' }
   tags:
     - piku
     - setup

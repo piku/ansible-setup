@@ -1,9 +1,10 @@
 ---
 
-- name: copy public keys
-  authorized_key: user={{ ansible_ssh_user }} key="{{ item }}"
-  with_file:
-     - ~/.ssh/id_rsa.pub
+- name: copy public key
+  authorized_key:
+    user: "{{ ansible_ssh_user }}"
+    state: present
+    key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
   tags:
     - setup
     - ssh
