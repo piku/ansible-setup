@@ -1,0 +1,7 @@
+- name: install database servers
+  apt: name={{ item }} state=latest
+  with_items:
+    - redis-server
+    - mongodb-server
+  tags:
+    - database
