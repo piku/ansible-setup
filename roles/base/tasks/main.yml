@@ -71,3 +71,10 @@
     - setup
     - tuning
 
+- name: alternate SSH port
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: "^Port"
+    line: "Port {{ custom_ssh_port }}"
+  notify: "restart sshd"
+
