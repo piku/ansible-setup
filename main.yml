@@ -93,6 +93,7 @@
   roles:
     - base
     - piku
-    #- dropbox
-    #- site
-    - database
+    - dropbox
+    - site
+    - azure-swap
+    #- database
