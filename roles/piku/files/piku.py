@@ -442,7 +442,7 @@ def spawn_app(app, deltas={}):
             worker_count[k] = worker_count[k]+deltas[k]
 
     # Cleanup env
-    for k, v in env:
+    for k, v in env.items():
         if k.startswith('INTERNAL_'):
             del env[k]
 
