@@ -3,11 +3,11 @@
 - name: set up swap
   vars:
     waagent:
-      ResourceDisk.Format: y                   # Format if unformatted.
-      ResourceDisk.Filesystem: ext4            # Typically ext3 or ext4. FreeBSD image$
+      ResourceDisk.Format: y                   # Format if unformatted
+      ResourceDisk.Filesystem: ext4            # Typically ext3 or ext4
       ResourceDisk.MountPoint: /mnt/resource   #
-      ResourceDisk.EnableSwap: y               # Create and use swapfile on resource d$
-      ResourceDisk.SwapSizeMB: 2048            # Size of the swapfile.
+      ResourceDisk.EnableSwap: y               # Create and use swapfile
+      ResourceDisk.SwapSizeMB: 2048            # Size of the swapfile
   sudo: yes
   lineinfile: dest=/etc/waagent.conf line="{{ item.key }}={{ item.value }}"
   with_dict: "{{ waagent }}"
