@@ -24,6 +24,7 @@
 - name: install base packages
   apt: name={{ item }} state=latest
   with_items:
+    - cpulimit
     - fail2ban
     - htop
     - iftop

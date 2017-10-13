@@ -13,4 +13,4 @@
 - name: install dropbox crontab entry
   become: yes
   become_user: piku
-  cron: { name: dropbox, special_time: reboot, job: /home/piku/dropbox.py start }
+  cron: { name: dropbox, special_time: reboot, job: "/home/piku/dropbox.py start -i; cpulimit -e dropbox -l 15 &" }
