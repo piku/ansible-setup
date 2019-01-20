@@ -28,6 +28,7 @@
     - fail2ban
     - htop
     - iftop
+    - iotop
     - language-pack-en-base
     - software-properties-common
     - tmux
