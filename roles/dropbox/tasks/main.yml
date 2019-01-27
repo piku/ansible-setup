@@ -13,4 +13,4 @@
 - name: install dropbox crontab entry
   become: yes
   become_user: piku
-  cron: { name: dropbox, special_time: reboot, job: "/home/piku/dropbox.py start -i; sleep 15; prlimit --pid `pidof dropbox` --nofile=256:1024 --nproc=16:32; ionice -p `pidof dropbox` -c 2; cpulimit -e dropbox -l 15 &" }
+  cron: { name: dropbox, special_time: reboot, job: "/home/piku/dropbox.py start -i; sleep 15; ionice -p `pidof dropbox` -c 2; cpulimit -e dropbox -l 15 &" }

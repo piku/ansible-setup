@@ -25,6 +25,7 @@
   apt: name={{ item }} state=latest
   with_items:
     - cpulimit
+    - cgroups-bin
     - fail2ban
     - htop
     - iftop
@@ -58,9 +59,16 @@
     - setup
     - configuration
 
-- name: limits
+- name: limit open files for piku
   lineinfile: dest=/etc/security/limits.conf line="{{ piku_username }} {{ item.key }} nofile {{ item.value }}"
   with_dict: "{{ limits }}"
+  sudo: yes
+  tags:
+    - setup
+    - tuning
+
+- name: limit priority for omsagent
+  lineinfile: dest=/etc/security/limits.conf line="omsagent - priority 30"
   sudo: yes
   tags:
     - setup
@@ -81,3 +89,11 @@
     line: "Port {{ custom_ssh_port }}"
   notify: "restart sshd"
   
+- name: set up cgconfig and rc.local
+  sudo: yes
+  copy: src={{ item.src }} dest={{ item.dest }} owner={{ item.owner }} group={{ item.group }} mode={{ item.mode }} backup={{ item.backup }}
+  with_items:
+      - { src: 'cgconfig.conf', dest: '/etc/cgconfig.conf', owner: 'root', group: 'root', mode: 644, backup: 'no' }
+      - { src: 'rc.local', dest: '/etc/rc.local', owner: 'root', group: 'root', mode: 755, backup: 'no' }
+  tags:
+    - setup

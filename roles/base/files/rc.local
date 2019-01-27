@@ -1,0 +1,3 @@
+#!/bin/sh
+cgconfigparser -l /etc/cgconfig.conf
+cgrulesengd

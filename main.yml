@@ -63,8 +63,8 @@
         # disable slow start
         net.ipv4.tcp_slow_start_after_idle: 0
         # allow reuse of TIME_WAIT sockets
-        net.ipv4.tcp_tw_recycle: 1
-        net.ipv4.tcp_tw_reuse: 1
+        #net.ipv4.tcp_tw_recycle: 1
+        #net.ipv4.tcp_tw_reuse: 1
         # number of times SYNACKs for passive TCP connections
         net.ipv4.tcp_synack_retries: 2
         # decrease the time default value for tcp_fin_timeout connection
@@ -91,9 +91,9 @@
         #net.ipv4.udp_wmem_min: 16384
 
   roles:
-    - base
-    - piku
-    - dropbox
-    - site
+    #- base
+    #- piku
+    #- dropbox
+    #- site
     - azure-swap
     #- database

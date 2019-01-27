@@ -1,2 +1,3 @@
 deploy:
-	ansible-playbook -i inventory.txt main.yml
+	ansible-playbook -i inventory-home.txt main.yml
+	#--ask-sudo-password
