@@ -95,5 +95,6 @@
   with_items:
       - { src: 'cgconfig.conf', dest: '/etc/cgconfig.conf', owner: 'root', group: 'root', mode: 644, backup: 'no' }
       - { src: 'rc.local', dest: '/etc/rc.local', owner: 'root', group: 'root', mode: 755, backup: 'no' }
+      - { src: 'cgrules.conf', dest: '/etc/cgrules.conf', owner: 'root', group: 'root', mode: 644, backup: 'no' }
   tags:
     - setup
