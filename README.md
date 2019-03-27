@@ -1,6 +1,6 @@
 # ansible-piku
 
-This ansible playbook provisions an Ubuntu 16.04 server with a `piku` environment that matches what I currently use http://taoofmac.com.
+This ansible playbook provisions an Ubuntu 16.04 server with a `piku` environment that matches what I currently use for  http://taoofmac.com.
 
 ## Instructions
 
