@@ -91,9 +91,9 @@
         #net.ipv4.udp_wmem_min: 16384
 
   roles:
-    #- base
-    #- piku
+    - base
+    - piku
     #- dropbox
-    #- site
+    - site
     - azure-swap
     #- database
