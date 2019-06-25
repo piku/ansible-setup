@@ -2,27 +2,28 @@
 
 - name: install package dependencies
   sudo: yes
-  apt: name={{ item }} state=latest
-  with_items:
-    - git
-    - build-essential
-    - libxml2-dev
-    - libxslt1-dev
-    - libjpeg-dev
-    - zlib1g-dev
-    - python-dev
-    - python3-dev
-    - python-virtualenv 
-    - python-pip  
-    - uwsgi 
-    - uwsgi-plugin-python
-    - uwsgi-plugin-python3
-    - uwsgi-plugin-asyncio-python3
-    - uwsgi-plugin-gevent-python
-    - uwsgi-plugin-tornado-python
-    - incron
-    - nginx
-    - wget
+  apt: state=latest 
+    state: latest
+    name:
+      - git
+      - build-essential
+      - libxml2-dev
+      - libxslt1-dev
+      - libjpeg-dev
+      - zlib1g-dev
+      - python-dev
+      - python3-dev
+      - python-virtualenv 
+      - python-pip  
+      - uwsgi 
+      - uwsgi-plugin-python
+      - uwsgi-plugin-python3
+      - uwsgi-plugin-asyncio-python3
+      - uwsgi-plugin-gevent-python
+      - uwsgi-plugin-tornado-python
+      - incron
+      - nginx
+      - wget
   tags:
     - piku
     - setup
@@ -57,7 +58,7 @@
 - name: setup piku
   become: yes
   become_user: "{{ piku_username }}"
-  shell: python /home/{{ piku_username }}/piku.py setup && python /home/{{ piku_username }}/piku.py setup:ssh /tmp/pubkey
+  shell: python3 /home/{{ piku_username }}/piku.py setup && python /home/{{ piku_username }}/piku.py setup:ssh /tmp/pubkey
   tags:
     - piku
     - setup
