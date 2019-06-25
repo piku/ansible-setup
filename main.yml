@@ -95,5 +95,5 @@
     - piku
     #- dropbox
     - site
-    - azure-swap
+    - swapfile-gcp
     #- database
