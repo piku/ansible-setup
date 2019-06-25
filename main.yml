@@ -38,7 +38,7 @@
         # increase maximum open files
         fs.file-max: 65535
         # maximize number of file watches
-        fs.inotify.max_user_watches: 100000
+        fs.inotify.max_user_watches: 524288
         # swap only to avoid out of memory
         vm.swappiness: 0
         #vm.swappiness: 10
