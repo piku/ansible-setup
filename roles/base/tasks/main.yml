@@ -23,7 +23,17 @@
 
 - name: install base packages
   apt:
-    name: ['cpulimit', 'fail2ban', 'htop', 'iftop', 'iotop', 'language-pack-en-base', 'software-properties-common', 'tmux', 'wget', 'vim']
+    name: 
+      - cpulimit
+      - fail2ban
+      - htop
+      - iftop
+      - iotop
+      - language-pack-en-base
+      - software-properties-common
+      - tmux
+      - wget
+      - vim
     state: latest
   tags:
     - setup
