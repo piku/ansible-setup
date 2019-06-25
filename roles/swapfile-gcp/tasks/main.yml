@@ -1,0 +1,22 @@
+---
+  
+- name: set up swap
+  shell: |
+    fallocate -l 2G /swapfile
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    swapon -s
+  sudo: yes
+  tags:
+    - setup
+
+- name: update mounts
+  mount:
+    src: "/swapfile"
+    name: "none"
+    fstype: "swap"
+    opts: "sw,nofail"
+    dump: "0"
+    passno: "0"
+    state: "{{ 'absent' if swapfile_delete else 'present' }}"
