@@ -19,4 +19,4 @@
     opts: "sw,nofail"
     dump: "0"
     passno: "0"
-    state: "{{ 'absent' if swapfile_delete else 'present' }}"
+    state: present

@@ -2,11 +2,12 @@
 
 - name: install package dependencies
   sudo: yes
-  apt: state=latest 
+  apt:
     state: latest
     name:
       - git
       - build-essential
+      - libyaml-dev
       - libxml2-dev
       - libxslt1-dev
       - libjpeg-dev
@@ -58,7 +59,8 @@
 - name: setup piku
   become: yes
   become_user: "{{ piku_username }}"
-  shell: python3 /home/{{ piku_username }}/piku.py setup && python /home/{{ piku_username }}/piku.py setup:ssh /tmp/pubkey
+  shell: |
+    python3 /home/{{ piku_username }}/piku.py setup && python3 /home/{{ piku_username }}/piku.py setup:ssh /tmp/pubkey
   tags:
     - piku
     - setup
